@@ -1,82 +1,55 @@
-# 
-
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
-
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
-
-[Learn more about this workspace setup and its capabilities](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
-
-## Finish your CI setup
-
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/HFvYYDXpz5)
+# Technology Stack for Multivendor Ecommerce Shop
 
 
-## Run tasks
+## Backend
 
-To run the dev server for your app, use:
+- Express: Node.js framework for building the server-side application.
+- MongoDB: NoSQL database for storing product, vendor, and user data.
+- Redis: In-memory data store for caching and session management.
+- Prisma: Object-Relational Mapping (ORM) for database management and querying.
+- Kafka: Messaging system for handling asynchronous tasks.
+- WebSocket: For real-time communication between the client and the server.
+- Firebase Web Push Notifications: For sending push notifications to users.
 
-```sh
-npx nx serve auth-service
-```
+## Frontend
 
-To create a production bundle:
+- Next.js: React framework for building the user interface with server-side rendering.
+- Jest: Testing framework for unit and integration tests on the frontend.
 
-```sh
-npx nx build auth-service
-```
+## Architecture & Deployment
 
-To see all available targets to run for a project, run:
+- Microservice Architecture: Modular design for scalability and maintainability.
+- NX Mono Repo: Monorepo setup for managing multiple packages and services.
+- Docker: Containerization for consistent development and deployment.
+- AWS: Cloud platform for hosting and scaling the application.
+- EC2: AWS service for virtual servers to run the application.
+- Cloudflare: For CDN, DNS, and security features like DDoS protection.
+- Domain Management: Handling custom domains for the ecommerce platform.
 
-```sh
-npx nx show project auth-service
-```
+## DevOps & CI/CD
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+- CI/CD: Continuous integration and deployment pipelines (mentioned twice, likely using multiple tools).
+- GitHub Actions: Automating workflows for building, testing, and deploying.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Machine Learning
 
-## Add new projects
+- TensorFlow: For implementing ML features like product recommendations or fraud detection.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## API & Documentation
 
-Use the plugin's generator to create new projects.
+- API Docs: Documentation for the API endpoints.
+- Swagger: Tool for generating interactive API documentation.
+- API Testing: Ensuring the APIs work as expected.
 
-To generate a new application, use:
+## Image Processing
 
-```sh
-npx nx g @nx/node:app demo
-```
-
-To generate a new library, use:
-
-```sh
-npx nx g @nx/node:lib mylib
-```
-
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- Image Kit: For image optimization, resizing, and delivery.
 
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-## Install Nx Console
+# NX Mono Repo Setup
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/nx-api/node?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+- npx create-nx-workspace@latest . `(to create a new workspace)`
+- npm install --save-dev @nx/express `(to add express support)`
+- npx nx generate @nx/express:app apps/my-app `(to generate a new express app)` **
+- npx nx g @nx/express:app my-app --directory=apps/my-app --e2eTestRunner=none `(to generate a new express app without e2e tests)`
